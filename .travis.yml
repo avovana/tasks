@@ -11,4 +11,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T cpp01_2-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uvvz-otus:$BINTRAY_API_KEY "https://bintray.com/avovana/tasks/1lessonhello/$TRAVIS_BUILD_NUMBER/cpp01_2-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uvvz-otus:$BINTRAY_API_KEY "https://bintray.com/avovana/tasks/1lessonhello/$TRAVIS_BUILD_NUMBER/cpp01_2-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
