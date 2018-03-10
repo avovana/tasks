@@ -7,7 +7,7 @@ std::string version()
 	version.append(".");
 	version.append(std::string(PROJECT_VERSION_MINOR));
 	version.append(".");
-	version.append(std::string(PROJECT_VERSION_PATCH));
+	version.append(std::to_string(PROJECT_VERSION_PATCH));
 	
 	return version;
 }
