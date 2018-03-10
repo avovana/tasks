@@ -1,7 +1,13 @@
 #include <iostream>
 #include "lib.h"
 
-int version()
+std::string version()
 {
-	return PROJECT_VERSION_PATCH;
+	std::string version = std::to_string(PROJECT_VERSION_MAJOR);
+	version.append(".");
+	version.append(std::to_string(PROJECT_VERSION_MINOR));
+	version.append(".");
+	version.append(std::to_string(PROJECT_VERSION_PATCH));
+	
+	return version;
 }
