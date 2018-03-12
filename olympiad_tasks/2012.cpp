@@ -6,13 +6,13 @@
 #include <string>
 #include <chrono>
 
-using namespace std::chrono_literals;
-
-auto availableTime = 4h;
-auto timeForOneTask = 45min;
-
 constexpr int canBeSolvedTasks()
 {
+    using namespace std::chrono_literals;
+
+    auto availableTime = 4h;
+    auto timeForOneTask = 45min;
+    
 	return availableTime / timeForOneTask;
 }
 
