@@ -1,3 +1,7 @@
+// http://acm.timus.ru/problem.aspx?space=1&num=2012
+
+// #include "stdafx.h" // for Visual Studio
+
 #include <iostream>
 #include <string>
 #include <chrono>
