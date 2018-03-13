@@ -92,7 +92,7 @@ int main(int argc, char const *argv[])
 			ip_pool.push_back(getIpAdress(v.at(0), '.'));
 		}
 
-		std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_adress>());
+		std::sort(std::begin(ip_pool), std::end(ip_pool), std::greater<ip_adress>());
 
 		for (const auto & ip : ip_pool) {
 			print(ip);
