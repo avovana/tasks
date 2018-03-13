@@ -64,7 +64,8 @@ ip_adress getIpAdress(const std::string &str, char d)
 	}
 	r.push_back(str.substr(start));
 
-	assert(r.size() == 4);
+	if(r.size() != 4)
+		throw std::invalid_argument("wrong ip adress format!");
 
 	return std::make_tuple(std::stoi(r.at(0)), std::stoi(r.at(1)), std::stoi(r.at(2)), std::stoi(r.at(3)));
 }
