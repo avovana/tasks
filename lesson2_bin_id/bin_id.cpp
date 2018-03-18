@@ -5,34 +5,25 @@ namespace
 {
     constexpr size_t bin_id(size_t value)
 	{
-        if(value <= 1)
-            return 0;
-        
-        size_t degree = 0;
-        
-        if((value % 2) == 0) // есть шанс, что число - чистая степень 2ки
-        {
-            while((value % 2) == 0)
-            {
-                value = value / 2;
-                ++degree;
-                
-                if(value == 1)
-                {
-                    return degree;
-                }
-            }
-        }
-        
-        while(value)
-        {
-            value = value / 2;
-            
-            if(value)
-                ++degree;
-        }
-        
-		return ++degree;
+		size_t degree = 0;
+		bool pure_power = true;
+	
+		while (n) 
+		{
+			if (n != 0b1)					// Число еще не выродилось в 1ый бит?
+				if ((n & 0b1) == 0b1)		// Проверяем, есть ли 1ый бит
+					pure_power = false;		// Значит есть еще как минимум какой-нибудь бит
+	
+			n >>= 1;
+	
+			if (n)
+				++degree;
+		}
+	
+		if (pure_power)
+			return degree;
+		else
+			return ++degree;
 	}
 
 	static_assert(bin_id(0) == 0, "bin_id doesn't work");
