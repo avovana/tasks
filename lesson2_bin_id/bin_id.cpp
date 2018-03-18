@@ -5,28 +5,25 @@ namespace
 {
 	#define b_01 1
 
-    constexpr size_t bin_id(size_t value)
+	constexpr bool additionalBitsAbsent(size_t value)
 	{
-		size_t degree = 0;
-		bool pure_power = true;
-	
-		while (value) 
-		{
-			if (value != b_01)					// Число еще не выродилось в 1ый бит?
-				if ((value & b_01) == b_01)		// Проверяем, есть ли 1ый бит
-					pure_power = false;			// Значит есть еще как минимум какой-нибудь бит
-	
-			value >>= 1;
-	
-			if (value)
-				++degree;
-		}
-	
-		if (pure_power)
-			return degree;
-		else
-			return ++degree;
+		return (value != b_01) ? (
+								  ((value & b_01) != b_01) ? true : false
+								 )
+								 : true;
 	}
+
+	constexpr size_t bin_id(size_t val, bool pure_power = true, size_t degree = 0)
+	{
+		return val ? (
+					  (val >> 1) ?															
+								   pure_power ? 
+											    degree + 1 + bin_id(val >> 1, additionalBitsAbsent(val))
+											  : degree + 1 + bin_id(val >> 1, false)
+								 : pure_power ? 0 : 1
+					 )
+					 : 0;
+	}	
 
 	static_assert(bin_id(0) == 0, "bin_id doesn't work");
 	static_assert(bin_id(1) == 0, "bin_id doesn't work");
