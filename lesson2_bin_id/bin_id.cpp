@@ -3,6 +3,8 @@
 // Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки 
 namespace
 {
+	#define b_01 1
+
     constexpr size_t bin_id(size_t value)
 	{
 		size_t degree = 0;
@@ -10,9 +12,9 @@ namespace
 	
 		while (value) 
 		{
-			if (value != 0b1)				// Число еще не выродилось в 1ый бит?
-				if ((value & 0b1) == 0b1)		// Проверяем, есть ли 1ый бит
-					pure_power = false;		// Значит есть еще как минимум какой-нибудь бит
+			if (value != b_01)					// Число еще не выродилось в 1ый бит?
+				if ((value & b_01) == b_01)		// Проверяем, есть ли 1ый бит
+					pure_power = false;			// Значит есть еще как минимум какой-нибудь бит
 	
 			value >>= 1;
 	
