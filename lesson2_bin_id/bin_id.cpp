@@ -8,15 +8,15 @@ namespace
 		size_t degree = 0;
 		bool pure_power = true;
 	
-		while (n) 
+		while (value) 
 		{
-			if (n != 0b1)					// Число еще не выродилось в 1ый бит?
-				if ((n & 0b1) == 0b1)		// Проверяем, есть ли 1ый бит
+			if (value != 0b1)					// Число еще не выродилось в 1ый бит?
+				if ((value & 0b1) == 0b1)		// Проверяем, есть ли 1ый бит
 					pure_power = false;		// Значит есть еще как минимум какой-нибудь бит
 	
-			n >>= 1;
+			value >>= 1;
 	
-			if (n)
+			if (value)
 				++degree;
 		}
 	
