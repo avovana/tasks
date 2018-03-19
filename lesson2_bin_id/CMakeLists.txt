@@ -2,14 +2,18 @@ cmake_minimum_required(VERSION 3.2)
 
 project(bin_id  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
+# set variables for directories with source code
+set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
+set(TEST_PATH "${PROJECT_SOURCE_DIR}/tests")
+
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(bin_id bin_id.cpp)
+add_executable(bin_id ${SOURCE_PATH}/bin_id.cpp)
 
-add_library(bin_functions lib.cpp)
+add_library(bin_functions ${SOURCE_PATH}/lib.cpp)
 target_link_libraries(bin_id bin_functions)
 
-add_executable(test_bin_func test_bin_id.cpp)
+add_executable(test_bin_func ${TEST_PATH}/test_bin_id.cpp)
 
 set_target_properties(
   bin_id
