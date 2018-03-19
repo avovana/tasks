@@ -4,14 +4,17 @@ project(bin_id  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 add_executable(bin_id_ bin_id.cpp)
 
-set_target_properties(bin_id_ PROPERTIES
-  CXX_STANDARD 14
-  CXX_STANDARD_REQUIRED ON
-  COMPILE_OPTIONS -Wpedantic -Wall -Wextra
-)
-
 add_library(bin_functions lib.cpp)
 target_link_libraries(bin_id_ bin_functions)
+
+set_target_properties(
+  bin_id_ 
+  bin_functions 
+  PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+    COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+)
 
 install(TARGETS bin_id_ RUNTIME DESTINATION bin)
 
