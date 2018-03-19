@@ -9,24 +9,24 @@ add_executable(bin_id bin_id.cpp)
 add_library(bin_functions lib.cpp)
 target_link_libraries(bin_id bin_functions)
 
-add_executable(test_main_cli test_main.cpp)
+add_executable(test_bin_func test_bin_id.cpp)
 
 set_target_properties(
   bin_id
   bin_functions
-  test_main_cli
+  test_bin_func
   PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(test_main_cli PROPERTIES
+set_target_properties(test_bin_func PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(test_main_cli
+target_link_libraries(test_bin_func
   ${Boost_LIBRARIES}
   bin_functions 
 )
@@ -45,4 +45,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(test_version_valid test_main_cli)
+add_test(test_bin_id test_bin_func)

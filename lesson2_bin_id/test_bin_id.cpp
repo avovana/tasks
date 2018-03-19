@@ -6,7 +6,7 @@
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
 
-BOOST_AUTO_TEST_CASE(test_version_valid)
+BOOST_AUTO_TEST_CASE(test_bin_id)
 {
   BOOST_REQUIRE( bin_id(1023) == 10 );
   BOOST_REQUIRE( bin_id(1024) == 10 );
