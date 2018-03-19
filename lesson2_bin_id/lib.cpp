@@ -10,7 +10,7 @@ constexpr bool additionalBitsAbsent(size_t value)
                            : true;
 }
 
-constexpr size_t bin_id(size_t val, bool pure_power, size_t degree)
+constexpr size_t bin_id(size_t val, bool pure_power = true, size_t degree = 0)
 {
   return val ? (
                 (val >> 1) ?
