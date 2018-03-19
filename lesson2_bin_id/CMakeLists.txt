@@ -10,7 +10,7 @@ set_target_properties(bin_id_ PROPERTIES
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-add_library(bin_functions lib.h)
+add_library(bin_functions lib.cpp)
 target_link_libraries(bin_id_ bin_functions)
 
 install(TARGETS bin_id_ RUNTIME DESTINATION bin)
