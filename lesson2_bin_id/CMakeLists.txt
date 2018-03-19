@@ -10,6 +10,9 @@ set_target_properties(bin_id PROPERTIES
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
+add_library(bin_functions lib.cpp)
+target_link_libraries(bin_id bin_functions)
+
 install(TARGETS bin_id RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
