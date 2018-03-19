@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.2)
 
 project(bin_id  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
-add_executable(bin_id_ bin_id.cpp)
+add_executable(bin_id bin_id.cpp)
 
 add_library(bin_functions lib.cpp)
-target_link_libraries(bin_id_ bin_functions)
+target_link_libraries(bin_id bin_functions)
 
 set_target_properties(
-  bin_id_ 
+  bin_id
   bin_functions 
   PROPERTIES
     CXX_STANDARD 14
@@ -16,7 +16,7 @@ set_target_properties(
     COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-install(TARGETS bin_id_ RUNTIME DESTINATION bin)
+install(TARGETS bin_id RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
