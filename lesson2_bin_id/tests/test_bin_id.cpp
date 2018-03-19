@@ -1,4 +1,4 @@
-#include "src/lib.cpp"
+#include "lib.cpp"
 
 #define BOOST_TEST_MODULE test_main
 
