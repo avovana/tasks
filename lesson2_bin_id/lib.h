@@ -1,4 +1,4 @@
-	#include "lib.h"
+	#include <bits/stdc++.h>
   
   constexpr bool additionalBitsAbsent(size_t value);
 
