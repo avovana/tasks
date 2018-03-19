@@ -11,6 +11,7 @@ script:
   - sudo apt-get install -y -qq libboost-test1.54-dev
   - cmake .
   - cmake --build .
+  - cmake --build . --target test
   - cmake --build . --target package
 deploy:
   provider: script

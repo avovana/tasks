@@ -7,13 +7,26 @@ add_executable(bin_id bin_id.cpp)
 add_library(bin_functions lib.cpp)
 target_link_libraries(bin_id bin_functions)
 
+add_executable(test_main_cli test_main.cpp)
+
 set_target_properties(
   bin_id
-  bin_functions 
+  bin_functions
+  test_main_cli
   PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+)
+
+set_target_properties(test_main_cli PROPERTIES
+  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+)
+
+target_link_libraries(test_main_cli
+  ${Boost_LIBRARIES}
+  bin_functions 
 )
 
 install(TARGETS bin_id RUNTIME DESTINATION bin)
@@ -27,3 +40,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT vladimir.englisbox@gmail.com)
 
 include(CPack)
+
+enable_testing()
+
+add_test(test_version_valid test_main_cli)
