@@ -1,7 +1,7 @@
 // Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки 
 #include <bits/stdc++.h>
 
-#include "lib.h"
+#include "lib.cpp"
 
 	static_assert(bin_id(0) == 0, "bin_id doesn't work");
 	static_assert(bin_id(1) == 0, "bin_id doesn't work");
