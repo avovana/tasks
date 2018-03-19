@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.2)
 
 project(bin_id  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
 add_executable(bin_id bin_id.cpp)
 
 add_library(bin_functions lib.cpp)
