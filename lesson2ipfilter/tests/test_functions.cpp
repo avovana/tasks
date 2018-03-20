@@ -6,7 +6,7 @@
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
 
-BOOST_AUTO_TEST_CASE(test_bin_id)
+BOOST_AUTO_TEST_CASE(test_input_processing)
 {
 
   std::string source = {"113.162.145.156	111	0"};
