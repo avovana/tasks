@@ -48,37 +48,27 @@ int main(int argc, char const *argv[])
 
 		std::sort(std::begin(ip_pool), std::end(ip_pool), std::greater<ip_adress>());
 
-		for (const auto & ip : ip_pool) {
-			print(ip);
-		}
-
-                //for (const auto & ip : ip_pool) {
-                //	if (std::get<0>(ip) == 1) {
-                //		print(ip);
-                //	}
-                //}
+                for (const auto & ip : ip_pool)
+                    print(ip);
 
                 std::vector<ip_adress> filtered = ipFilter(ip_pool, FILTER_MATCH::IN_ORDER, 1);
-                std::cout << "Output 1: -------------------------" << std::endl;
+
                 for (const auto & ip : filtered)
                     print(ip);
 
-		for (const auto & ip : ip_pool) {
-			if ((std::get<0>(ip) == 46) &&
-				(std::get<1>(ip) == 70)) {
-				print(ip);
-			}
-		}
+                filtered.clear();
 
-		for (const auto & ip : ip_pool) {
-			if ((std::get<0>(ip) == 46) ||
-				(std::get<1>(ip) == 46) || 
-				(std::get<2>(ip) == 46) ||
-				(std::get<3>(ip) == 46)) {
-				print(ip);
-			}
-		}
+                filtered = ipFilter(ip_pool, FILTER_MATCH::IN_ORDER, 46, 70);
 
+                for (const auto & ip : filtered)
+                    print(ip);
+
+                filtered.clear();
+
+                filtered = ipFilter(ip_pool, FILTER_MATCH::ANY_OF, 46);
+
+                for (const auto & ip : filtered)
+                    print(ip);
 	}
 	catch (const std::exception &e)
 	{
