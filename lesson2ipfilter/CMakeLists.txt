@@ -16,11 +16,16 @@ set_target_properties(
     COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(test_bin_func PROPERTIES
-  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-  INCLUDE_DIRECTORIES ${SOURCE_PATH}
-  INCLUDE_DIRECTORIES ${Boost_LIBRARIES}
+set_target_properties(test_bin_func
+  PROPERTIES
+    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+    INCLUDE_DIRECTORIES ${SOURCE_PATH}
+    INCLUDE_DIRECTORIES ${Boost_LIBRARIES}
+)
+
+target_link_libraries(test_bin_func
+  ${Boost_LIBRARIES}
 )
 
 install(TARGETS ip_filter RUNTIME DESTINATION bin)
