@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(ipfilter  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+# check environment variable TRAVIS_BUILD_NUMBER
+if($ENV{TRAVIS_BUILD_NUMBER})
+    set(VERSION_BUILD $ENV{TRAVIS_BUILD_NUMBER})
+else()
+    set(VERSION_BUILD 0)
+endif()
+
+project(ipfilter  VERSION 0.0.${VERSION_BUILD})
 
 # set variables for directories with source code
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
@@ -11,13 +18,15 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 add_executable(ip_filter ${SOURCE_PATH}/ipfilter.cpp)
 
 add_library(functions_lib ${SOURCE_PATH}/lib.cpp)
-target_link_libraries(ip_filter functions_lib)
+add_library(filter_func ${SOURCE_PATH}/filter_func.cpp)
+target_link_libraries(ip_filter functions_lib filter_func)
 
 add_executable(test_func ${TEST_PATH}/test_functions.cpp)
 
 set_target_properties(
   ip_filter
   functions_lib
+  filter_func
   test_func
   PROPERTIES
     CXX_STANDARD 14

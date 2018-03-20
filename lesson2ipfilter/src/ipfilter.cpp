@@ -9,7 +9,7 @@
 #include <algorithm>    // std::sort
 
 #include "lib.cpp"
-
+#include "filter_func.cpp"
 
 std::ostream& operator<<(std::ostream& os, const ip_adress& ip)
 {
@@ -52,11 +52,16 @@ int main(int argc, char const *argv[])
 			print(ip);
 		}
 
-		for (const auto & ip : ip_pool) {
-			if (std::get<0>(ip) == 1) {
-				print(ip);
-			}
-		}
+                //for (const auto & ip : ip_pool) {
+                //	if (std::get<0>(ip) == 1) {
+                //		print(ip);
+                //	}
+                //}
+
+                std::vector<ip_adress> filtered = ipFilter(ip_pool, FILTER_MATCH::IN_ORDER, 1);
+                std::cout << "Output 1: -------------------------" << std::endl;
+                for (const auto & ip : filtered)
+                    print(ip);
 
 		for (const auto & ip : ip_pool) {
 			if ((std::get<0>(ip) == 46) &&
