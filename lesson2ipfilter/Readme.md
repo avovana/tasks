@@ -3,7 +3,6 @@ Program reads data from the standart input line by line.
 Line format:     ``text1 \t text2 \t text3 \n``.
 
 Only ``text1`` is valuable. It contains ip adress (ip4): 
->n1.n2.n3.n4,
 
 ```
 n1.n2.n3.n4,
