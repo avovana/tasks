@@ -19,8 +19,3 @@ Then append to the output:
 1. adresses started with "1";
 2. adresses started with "46.70";
 3. adresses containing "46".
-
-
-Then append adresses started with "1" to the output.
-Then append adresses started with "46.70" to the output.
-Then append adresses containing "46" to the output.
