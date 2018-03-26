@@ -1,6 +1,4 @@
-// http://acm.timus.ru/problem.aspx?space=1&num=1000
-
-//#include "stdafx.h" // for Visual Studio
+// Task - http://acm.timus.ru/problem.aspx?space=1&num=1000&locale=en
 
 #include <iostream>
 #include <string>
