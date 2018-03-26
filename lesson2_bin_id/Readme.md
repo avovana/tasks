@@ -1,7 +1,7 @@
 ## Bin Id
 Implement function that defines nearest power of 2.
 
-### **Requerements**
+### **Requirements**
 1. Function should be implemented using `C++11`(not C++14!) standart.
 2. Function should be `constexpr`.
 3. Function should `pass compile-time tests` such as:
