@@ -5,7 +5,7 @@ Here are presented my progress during [C++ Developer course](https://otus.ru/les
 
 ### Continuous Integration
 In the course [Continuous Integration](https://github.com/avovana/tasks/blob/master/lesson1cmake/Readme.md) is used.
-<br/>It helps making build process as easy as it can be.
+<br/>It makes build process as easy as it can be.
 <br/>Only *commit push* is required to start whole building process:
 1. build project;
 2. run tests;
