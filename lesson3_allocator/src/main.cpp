@@ -5,8 +5,8 @@
 #include <vector>
 #include <map>
 
-#include "allocator.h"
-#include "forward_list.h"
+#include "allocator.cpp"
+#include "forward_list.cpp"
 
 int factorial(int n)
 {
