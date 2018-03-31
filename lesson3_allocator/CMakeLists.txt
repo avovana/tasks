@@ -11,7 +11,7 @@ add_library(forward_list ${SOURCE_PATH}/forward_list.cpp)
 add_library(allocator_handmade ${SOURCE_PATH}/allocator.cpp)
 add_library(arena ${SOURCE_PATH}/arena.cpp)
 
-target_link_libraries(bin_id 
+target_link_libraries(allocator 
 	forward_list
 	allocator_handmade
 	arena
@@ -19,7 +19,7 @@ target_link_libraries(bin_id
 
 
 set_target_properties(
-  bin_id
+  allocator
   forward_list
   allocator_handmade
   arena
