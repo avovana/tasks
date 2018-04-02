@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(allocator_project  VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(allocator VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 # set variables for directories with source code
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
