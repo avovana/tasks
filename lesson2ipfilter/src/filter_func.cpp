@@ -81,7 +81,7 @@ bool match(const ip_adress& ip, FILTER_MATCH filterParametr, Args... args)
     
    auto callback_any = [ip, &passedTest](int /*index*/, auto&& t)
    {
-       static bool test = false;
+       bool test = false;
        
        if((t == std::get<0>(ip)) ||
           (t == std::get<1>(ip)) ||
