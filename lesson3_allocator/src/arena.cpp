@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define DEBUG 0
+//#define DEBUG
 
 class Arena
 {
