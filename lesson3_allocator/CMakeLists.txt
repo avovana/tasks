@@ -5,24 +5,10 @@ project(allocator VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 # set variables for directories with source code
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
-add_executable(allocator ${SOURCE_PATH}/main.cpp)
-
-add_library(forward_list ${SOURCE_PATH}/forward_list.cpp)
-add_library(allocator_handmade ${SOURCE_PATH}/allocator.cpp)
-add_library(arena ${SOURCE_PATH}/arena.cpp)
-
-target_link_libraries(allocator 
-	forward_list
-	allocator_handmade
-	arena
-)
-
+add_executable(allocator ${SOURCE_PATH}/main.cpp ${SOURCE_PATH}/forward_list.h ${SOURCE_PATH}/allocator.h)
 
 set_target_properties(
   allocator
-  forward_list
-  allocator_handmade
-  arena
   PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
