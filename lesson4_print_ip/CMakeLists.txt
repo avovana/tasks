@@ -22,7 +22,7 @@ set_target_properties(
   PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
-    COMPILE_OPTIONS -W1 -Wall -Wextra
+    COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
 install(TARGETS print_ip RUNTIME DESTINATION bin)
