@@ -7,7 +7,7 @@ before_script:
   - sudo apt-get update  
   - sudo apt-get install -qq g++-6 
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60  
-  - cd lesson4_print_ip
+  - cd lesson3_allocator
 script:
   - cmake .
   - cmake --build .
@@ -16,4 +16,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uavovana:$BINTRAY_API_KEY "https://api.bintray.com/content/avovana/tasks/4lesson_print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T allocator-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uavovana:$BINTRAY_API_KEY "https://api.bintray.com/content/avovana/tasks/3lesson_allocator/$TRAVIS_BUILD_NUMBER/allocator-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
