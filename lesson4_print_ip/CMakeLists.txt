@@ -37,4 +37,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT vladimir.englisbox@gmail.com)
 
+# test section
 include(CPack)
+enable_testing()
+add_subdirectory(tests)
