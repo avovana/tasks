@@ -6,6 +6,8 @@ else()
     set(VERSION_BUILD 0)
 endif()
 
+message(STATUS "VERSION_BUILD: " ${VERSION_BUILD})
+
 project(print_ip VERSION 0.0.${VERSION_BUILD})
 
 # set variables for directories with source code
