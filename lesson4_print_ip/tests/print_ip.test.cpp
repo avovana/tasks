@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(PrintContainers) {
 	std::string outputData2 = "255..255..0..0";
 
 	print_ip(result2, std::vector<int>{255, 255, 0, 0});
-	BOOST_CHECK(result.str() == outputData2);
+	BOOST_CHECK(result2.str() == outputData2);
 }
 
 // Функция должна распознавать нужные тип строки
