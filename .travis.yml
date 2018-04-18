@@ -16,6 +16,7 @@ script:
   - cmake --build . --target package
   # debug info:
   - ls /home/travis/build/avovana/tasks/lesson4_print_ip
+  - doxygen Doxyfile  
   
 deploy:
   provider: script
