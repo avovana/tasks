@@ -9,7 +9,7 @@
 #include <sstream>
 
 // Функция должна распознавать нужные типы фундаментальных данных
-BOOST_AUTO_TEST_CASE(PrintFundamentals) {
+/*BOOST_AUTO_TEST_CASE(PrintFundamentals) {
 
 	std::stringstream result;
 
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(PrintFundamentals) {
 		"123.45.67.89.101.112.131.41";
 
 	BOOST_CHECK(result.str() == outputData);
-}
+}*/
 
 // Функция должна распознавать нужные типы фундаментальных данных
 BOOST_AUTO_TEST_CASE(PrintContainers) {
