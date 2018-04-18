@@ -5,13 +5,13 @@ if (BUILD_TESTING)
         is_container.test.cpp
     )
 
-	add_executable(print_ip
+	add_executable(print_ip_test
         print_ip.test.cpp
     )
 
     set_target_properties(
 		is_containter_test
-		print_ip
+		print_ip_test
 		
 		PROPERTIES
         CXX_STANDARD 14
@@ -23,5 +23,5 @@ if (BUILD_TESTING)
     )
 
     add_test(IsContainerTest is_containter_test)
-	add_test(PrintIpTest print_ip)
+	add_test(PrintIpTest print_ip_test)
 endif()
