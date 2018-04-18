@@ -1,8 +1,8 @@
 //
-// File: is_conainer.test.cpp
+// File: print_ip.test.cpp
 //
 
-#define BOOST_TEST_MODULE IsFundamentalTest
+#define BOOST_TEST_MODULE PrintIpTest
 #include <boost/test/unit_test.hpp>
 
 #include "print_ip.h"
