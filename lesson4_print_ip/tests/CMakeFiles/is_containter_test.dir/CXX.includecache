@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/travis/build/avovana/tasks/lesson4_print_ip/tests/is_container.test.cpp
+boost/test/unit_test.hpp
+-
+is_container.h
+/home/travis/build/avovana/tasks/lesson4_print_ip/tests/is_container.h
+
+src/is_container.h
+deque
+-
+forward_list
+-
+list
+-
+map
+-
+queue
+-
+set
+-
+stack
+-
+string
+-
+tuple
+-
+type_traits
+-
+unordered_map
+-
+unordered_set
+-
+utility
+-
+vector
+-
+type_traits
+-
+

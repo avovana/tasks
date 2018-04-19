@@ -1,0 +1,1 @@
+/usr/bin/g++  -O3 -DNDEBUG  -rdynamic CMakeFiles/print_ip_test.dir/print_ip.test.cpp.o  -o print_ip_test -lboost_unit_test_framework 

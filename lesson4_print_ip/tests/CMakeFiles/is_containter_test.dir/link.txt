@@ -1,0 +1,1 @@
+/usr/bin/g++  -O3 -DNDEBUG  -rdynamic CMakeFiles/is_containter_test.dir/is_container.test.cpp.o  -o is_containter_test -lboost_unit_test_framework 
