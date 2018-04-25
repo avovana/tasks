@@ -1,7 +1,6 @@
 //
 // File: is_conainer.test.cpp
 //
-#pragma once
 
 #define BOOST_TEST_MODULE IsContainerTest
 #include <boost/test/unit_test.hpp>
