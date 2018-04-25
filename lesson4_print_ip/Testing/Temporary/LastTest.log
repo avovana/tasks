@@ -1,20 +1,20 @@
-Start testing: Apr 19 12:33 UTC
+Start testing: Apr 25 19:21 UTC
 ----------------------------------------------------------
 1/2 Testing: IsContainerTest
 1/2 Test: IsContainerTest
 Command: "/home/travis/build/avovana/tasks/lesson4_print_ip/tests/is_containter_test"
 Directory: /home/travis/build/avovana/tasks/lesson4_print_ip/tests
-"IsContainerTest" start time: Apr 19 12:33 UTC
+"IsContainerTest" start time: Apr 25 19:21 UTC
 Output:
 ----------------------------------------------------------
 Running 2 test cases...
 
 *** No errors detected
 <end of output>
-Test time =   0.01 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"IsContainerTest" end time: Apr 19 12:33 UTC
+"IsContainerTest" end time: Apr 25 19:21 UTC
 "IsContainerTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -22,7 +22,7 @@ Test Passed.
 2/2 Test: PrintIpTest
 Command: "/home/travis/build/avovana/tasks/lesson4_print_ip/tests/print_ip_test"
 Directory: /home/travis/build/avovana/tasks/lesson4_print_ip/tests
-"PrintIpTest" start time: Apr 19 12:33 UTC
+"PrintIpTest" start time: Apr 25 19:21 UTC
 Output:
 ----------------------------------------------------------
 Running 3 test cases...
@@ -32,8 +32,8 @@ Running 3 test cases...
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"PrintIpTest" end time: Apr 19 12:33 UTC
+"PrintIpTest" end time: Apr 25 19:21 UTC
 "PrintIpTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Apr 19 12:33 UTC
+End testing: Apr 25 19:21 UTC

@@ -1,3 +1,3 @@
-IsContainerTest 1 0.00546908
-PrintIpTest 1 0.00480795
+IsContainerTest 1 0.00248003
+PrintIpTest 1 0.00252008
 ---
