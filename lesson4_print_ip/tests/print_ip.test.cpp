@@ -1,6 +1,7 @@
 //
 // File: print_ip.test.cpp
 //
+#pragma once
 
 #define BOOST_TEST_MODULE PrintIpTest
 #include <boost/test/unit_test.hpp>
@@ -9,7 +10,7 @@
 #include <sstream>
 
 // Функция должна распознавать нужные типы фундаментальных данных
-BOOST_AUTO_TEST_CASE(PrintFundamentals) {
+BOOST_AUTO_TEST_CASE(PrintIntegrals) {
 
 	std::stringstream result;
 
