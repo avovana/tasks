@@ -1,31 +1,20 @@
 dist: trusty
 sudo: required
 language: cpp
+compiler: clang
 
 before_script:
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
-  - sudo apt-get install -qq g++-7 libboost-test1.54-dev doxygen graphviz
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90 
-  - cd lesson4_print_ip
-  
+  - cd lesson2ipfilter
 script:
-  - cmake . -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
+  # Boost Test Framework 1.54
+  - sudo apt-get install -y -qq libboost-test1.54-dev
+  - cmake .
   - cmake --build .
-  - cmake --build . --target test  
+  - cmake --build . --target test
   - cmake --build . --target package
-  # debug info:
-  - ls /home/travis/build/avovana/tasks/lesson4_print_ip
-  - doxygen Doxyfile  
-  
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script:
-    - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uavovana:$BINTRAY_API_KEY "https://api.bintray.com/content/avovana/tasks/4lesson_print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
-  - provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
-    on:
-     branch: master
+  provider: script
+  skip_cleanup: true
+  script:
+  - curl -T ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uavovana:$BINTRAY_API_KEY "https://api.bintray.com/content/avovana/tasks/2lesson_ip_filter/$TRAVIS_BUILD_NUMBER/ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
