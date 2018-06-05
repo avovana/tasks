@@ -422,3 +422,47 @@ int main()
         ;
     std::cout << "End program" << '\n';
 }
+
+//-----------------------------------------------------------
+// compile-time method call count:
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template<size_t D>
+class Proxy
+{
+public:
+    Proxy<D - 1> operator[](size_t) const
+    {
+        return Proxy<D - 1>{};
+    }
+};
+
+template<>
+class Proxy<1>
+{
+public:
+    size_t operator[](size_t) const
+    {
+        return 77;
+    }
+};
+
+template<size_t D>
+class Matrix
+{
+public:
+    Proxy<D> operator[](size_t) const
+    {
+        return Proxy<D>{};
+    }
+};
+
+int main()
+{
+    const Matrix<4> mat{};
+    cout << mat[0][1][2][3][4];
+}
