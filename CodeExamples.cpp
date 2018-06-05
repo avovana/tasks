@@ -466,3 +466,27 @@ int main()
     const Matrix<4> mat{};
     cout << mat[0][1][2][3][4];
 }
+
+//-----------------------------------------------------------
+// tuple with given size and type:
+
+#include <tuple>
+
+template<typename CoordinateType, unsigned N, typename... REST>
+struct generate_tuple_type
+{
+ typedef typename generate_tuple_type<CoordinateType, N-1, CoordinateType, REST...>::type type;
+};
+
+template<typename CoordinateType, typename... REST>
+struct generate_tuple_type<CoordinateType, 0, REST...>
+{
+  typedef std::tuple<REST...> type;
+};
+
+int main()
+{
+  using gen_tuple_t = generate_tuple_type<int, 3, double>::type;
+  using hand_tuple_t = std::tuple<int, int, int, double>;
+  static_assert( std::is_same<gen_tuple_t, hand_tuple_t>::value, "different types" );
+}
