@@ -344,3 +344,81 @@ int main()
   
   std::cout << "main. end" << std::endl;
 } 
+
+//-----------------------------------------------------------
+// compile-time method call count:
+
+#include <iostream>
+
+template <typename T, int N>
+struct result 
+{
+    T values[N];
+};
+
+template <typename T, int I, int N>
+class builder_ 
+{
+    
+private:    
+    
+    T*  values;
+    
+    friend class builder_<T, I - 1, N>;
+    
+    builder_(T* values)
+        : values(values) 
+        { 
+            std::cout << " private ctor" << '\n'; 
+        }
+    
+public:
+    
+    builder_(result<T, N>& r)
+        : values(r.values) 
+        { 
+            std::cout << " public ctor" << '\n'; 
+        }
+    
+    builder_<T, I + 1, N> set(T const& value) 
+    {
+        std::cout << " set" << '\n';
+        
+        *values = value;
+        return builder_<T, I + 1, N>(this->values + 1);
+    }
+    
+};
+
+template <typename T, int N>
+class builder_<T, N, N> 
+{
+    
+public:
+    
+    builder_(T*) 
+    { 
+        std::cout << " specialized ctor" << '\n'; 
+    }
+    
+};
+
+template <typename T, int N>
+auto builder(result<T, N>& r) 
+{
+    std::cout << "in function builder" << '\n';
+    return builder_<T, 0, N>(r);
+}
+
+int main()
+{
+    std::cout << "Start program" << '\n';
+    result<int, 4> r;
+    builder(r)
+        .set(1)
+        .set(2)
+        .set(3)
+        .set(4)
+        ;
+    std::cout << "End program" << '\n';
+}
