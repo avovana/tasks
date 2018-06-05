@@ -189,3 +189,158 @@ int main() {
 
     return 0;
 }
+
+//-----------------------------------------------------------
+// mutexes:
+
+#include <iostream>
+#include <string>
+#include <thread>
+#include <map>
+#include <mutex>
+#include <future>
+
+std::mutex cout_mutex;
+std::mutex cerr_mutex;
+
+using dict_t = std::map<std::string, std::string>;
+
+std::string foo(dict_t &)
+{
+    std::thread::id this_id = std::this_thread::get_id();
+
+    cout_mutex.lock();
+    std::cout << "foo " << this_id << std::endl;
+    cout_mutex.unlock();
+
+    cerr_mutex.lock();
+    std::cerr << "foo " << this_id << std::endl;
+    cerr_mutex.unlock();
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    return std::string{"ok"};
+}
+
+//thread_local int a1;
+int a1;
+
+int main()
+{
+    dict_t d;
+    std::thread t1(foo, std::ref(d));
+    std::thread t2(foo, std::ref(d));
+
+    t1.join();
+    t2.join();
+
+    auto r1 = std::async(std::launch::async,
+        foo, std::ref(d));
+    std::cout << r1.get() << std::endl;
+
+    auto r2 = std::async(std::launch::deferred,
+        foo, std::ref(d));
+    std::cout << r2.get() << std::endl;
+}
+
+//-----------------------------------------------------------
+// condition variable notify_one:
+
+#include <chrono>
+#include <condition_variable>
+#include <iostream>
+#include <queue>
+#include <thread>
+
+using namespace std::chrono_literals;
+
+std::queue<std::string> msgs;
+std::condition_variable cv;
+std::mutex cv_m;
+
+void worker(std::queue<std::string> &q)
+{
+    std::cout << "worker. started" << std::endl;
+    std::unique_lock<std::mutex> lk(cv_m);
+    std::cout << "worker. before wait call" << std::endl;
+    cv.wait(lk, [&q](){ std::cout << "worker. wait condition check" << std::endl; return !q.empty(); });
+    std::cout << "worker. processing ... " << std::endl;
+    auto m = q.front();т
+    q.pop();
+    lk.unlock();
+
+    std::cout << "worker. pop " << m << std::endl;
+}
+
+int main()
+{
+    std::thread t1(worker, std::ref(msgs));
+    
+    std::this_thread::sleep_for(2s);
+
+    {
+        std::lock_guard<std::mutex> lk(cv_m);
+        std::cout << "main. pushing new value to queue" << std::endl;
+        msgs.push("cmd1");
+    }
+    cv.notify_one();
+
+    t1.join();
+    std::cout << "main. end" << std::endl;
+} 
+
+//-----------------------------------------------------------
+// condition variable notify_all:
+
+#include <chrono>
+#include <condition_variable>
+#include <iostream>
+#include <queue>
+#include <thread>
+
+using namespace std::chrono_literals;
+
+std::queue<std::string> msgs;
+std::condition_variable cv;
+std::mutex cv_m;
+
+void worker(std::queue<std::string> &q)
+{
+    std::cout << "worker. started: " << std::this_thread::get_id() << std::endl;
+    std::unique_lock<std::mutex> lk(cv_m);
+
+    std::cout << "worker. before wait call" << std::endl;
+    cv.wait(lk, [&q](){ std::cout << "worker. wait condition check" << std::endl; return !q.empty(); });
+    std::cout << "worker. processing ... " << std::endl;
+    auto m = q.front();
+    q.pop();
+    lk.unlock();
+
+    std::cout << "worker. pop " << m << std::endl;
+}
+
+int main()
+{
+    std::thread t1(worker, std::ref(msgs));
+    std::this_thread::sleep_for(1s);
+
+    std::thread t2(worker, std::ref(msgs));
+    std::this_thread::sleep_for(1s);
+
+    {
+        std::lock_guard<std::mutex> lk(cv_m);
+        std::cout << "main. pushing new value to queue" << std::endl;
+        msgs.push("cmd1");
+        msgs.push("cmd2");
+    }
+    
+    /*cv.notify_all(); or... */
+    cv.notify_one();
+    std::this_thread::sleep_for(1s);
+    cv.notify_one();
+
+    t1.join();
+    t2.join();
+  
+  std::cout << "main. end" << std::endl;
+} 
