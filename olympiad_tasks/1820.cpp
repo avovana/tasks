@@ -71,49 +71,7 @@ int main()
         std::transform (operationsToFryStakes.begin(), operationsToFryStakes.end(), operationsToFryStakes.begin(), turnToHalfFryState);
         
         ++operationNumbers;
-  
     }
     
     std::cout << operationNumbers << std::endl;
 }
-
-/*
-int main()
-{
-    size_t steaks;
-    std::cin >> steaks;
-    
-    size_t friesLimit;
-    std::cin >> friesLimit;
-    
-    size_t friesNeeded = steaks * 2;
-
-    std::cout << friesNeeded / friesLimit;
-}
-*/
-
-/*
-int main()
-{
-    size_t steaks;
-    std::cin >> steaks;
-    
-    size_t halfSteaksLeft = steaks * 2;
-    
-    size_t friesLimit;
-    std::cin >> friesLimit;
-    
-    size_t operations = 0;
-    
-    while(halfSteaksLeft)
-    {
-        ++operations;
-        if(halfSteaksLeft > friesLimit)
-            halfSteaksLeft -= friesLimit;    
-        else
-            halfSteaksLeft = 0;
-    }
-    
-    std::cout << operations;
-}
-*/
