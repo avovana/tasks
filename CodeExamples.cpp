@@ -490,3 +490,62 @@ int main()
   using hand_tuple_t = std::tuple<int, int, int, double>;
   static_assert( std::is_same<gen_tuple_t, hand_tuple_t>::value, "different types" );
 }
+
+//-----------------------------------------------------------
+// algorithm - quicksort:
+#include <iostream>
+
+template <class T>
+void swap(T & el1, T & el2)
+{
+  T tmp = el1;
+  el1 = el2;
+  el2 = tmp;
+}
+
+template <class T>
+    int partition(T A[], int low, int high)
+{
+    int mid = (low + high) / 2;
+    T pivot = A[mid];
+    
+    int scanUp = low;
+    int scanDown = high;
+
+    while(scanUp <= scanDown)
+    {
+        while(A[scanUp] < pivot)
+            scanUp++;
+
+        while(A[scanDown] > pivot)
+            scanDown--;
+
+        if(scanUp >= scanDown)
+            break;
+            
+        swap(A[scanUp++], A[scanDown--]);
+    }
+    
+    return scanDown;
+}
+
+template<typename T>
+void quickSort(T array[], int low, int high)
+{
+    if(low < high)
+    {
+        int q = partition(array, low, high);
+        quickSort(array, low, q);
+        quickSort(array, q + 1, high);
+    }
+    return;
+}
+
+int main()
+{
+    double array[] = {1, 7, 4, 8, 13.6, 25, 6, 50, 14, 3, 2, 1};
+    quickSort(array, 0, 11);
+    
+    for (int i = 0; i < 12; i++)
+        std::cout << array[i] << " ";
+}
