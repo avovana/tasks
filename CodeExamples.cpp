@@ -549,3 +549,47 @@ int main()
     for (int i = 0; i < 12; i++)
         std::cout << array[i] << " ";
 }
+
+//-----------------------------------------------------------
+// algorithm - bubblesort:
+
+#include <iostream>
+
+template<typename T>
+void swap(T & el1, T & el2)
+{
+  T temp = el1;
+  el1 = el2;
+  el2 = temp;
+}
+
+template<typename T>
+void bubbleSort(T array[], int size)
+{
+  bool swapFlag{ true };
+
+  while (swapFlag)
+  {
+    swapFlag = false;
+
+    for (int i = 0; i < size - 1; ++i)
+    {
+      if (array[i] > array[i + 1])
+      {
+        swap(array[i], array[i + 1]);
+        swapFlag = true;
+      }
+    }
+  }
+}
+
+int main()
+{
+  int array[] = { 1, 2, 3, 6, 8, 4, 12, 15, 5 };
+  bubbleSort(array, 9);
+
+  for (int i = 0; i < 9; ++i)
+    std::cout << array[i] << " ";
+
+  return 0;
+}
