@@ -176,6 +176,7 @@ int main() {
     std::cout << std::get<0>(el) << " " << std::get<1>(el) << " " << std::get<2>(el) << std::endl;
     std::cout << std::endl;
 
+    
     for (auto el : s)
         std::cout << std::get<0>(el) << " " << std::get<1>(el) << " " << std::get<2>(el) << std::endl;
 
@@ -592,4 +593,60 @@ int main()
     std::cout << array[i] << " ";
 
   return 0;
+}
+
+//-----------------------------------------------------------
+// algorithm - selectionsort:
+
+#include <iostream>
+
+template<typename T>
+void swap(T & el1, T & el2)
+{
+    T temp = el1;
+    el1 = el2;
+    el2 = temp;
+}
+
+template<typename T>
+void selectionSort(T array[], int size)
+{
+    if (size <= 1)
+        return;
+
+    for (int j = 0; j < size; ++j)
+    {
+        T min = array[j];
+        int i = j;
+        bool foundMin = false;
+        int foundIdx = 0;
+
+        for (; i < size; i++)
+        {
+            if (array[i] < min)
+            {
+                min = array[i];
+                foundMin = true;
+                foundIdx = i;
+            }
+        }
+
+        if (foundMin)
+            swap(array[j], array[foundIdx]);
+    }
+}
+
+int main()
+{
+    int array[] = { 1, 3, 5, 8, 2, 16, 14, 22, 8, 2, 7 };
+    std::size_t arraySize = sizeof(array);
+    std::size_t elementSize = sizeof(decltype(array[0]));
+
+    std::size_t size = arraySize / elementSize;
+    selectionSort(array, size);
+
+    for (int i = 0; i < size; ++i)
+        std::cout << array[i] << " ";
+
+    return 0;
 }
