@@ -650,3 +650,50 @@ int main()
 
     return 0;
 }
+
+//-----------------------------------------------------------
+// algorithm - insertionsort:
+
+#include <iostream>
+#include <array>
+
+template<typename T>
+void swap(T & el1, T & el2)
+{
+    T temp = el1;
+    el1 = el2;
+    el2 = temp;
+}
+
+template<typename T>
+void insertionSort(T& array)
+{
+    int size = array.size();
+
+    if(size < 2) {
+        return;
+    } else if(size == 2) {
+        if(array[1] < array[0])
+            swap(array[1], array[0]);
+    }
+
+    for(int i = 1; i < size; ++i)
+    {
+        for(int j = i; j - 1 != 0; --j)
+        {
+            if(array[j] < array[j - 1])
+                swap(array[j], array[j - 1]);
+        }
+    }
+}
+
+int main()
+{
+    std::array<int, 11> array{ 1, 3, 5, 8, 2, 16, 14, 22, 8, 2, 7 };
+    insertionSort(array);
+
+    for(auto &el : array)
+        std::cout << el << " ";
+
+    return 0;
+}
