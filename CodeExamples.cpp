@@ -697,3 +697,69 @@ int main()
 
     return 0;
 }
+
+//-----------------------------------------------------------
+// algorithm - binary search:
+
+#include "stdio.h"
+#include <algorithm>
+
+const int size = 10;
+const int notFound = -1;
+const int error = -2;
+
+int binarySearch(int sortedArray[], const int size, int number)
+{
+    if(size < 1)
+        return error;
+    
+    if(size == 1 && sortedArray[0] != number)
+        return notFound;
+        
+    int min = 0;
+    int max = size - 1;
+    
+    while(min <= max)
+    {
+        int middle = min + (max - min) / 2;
+        
+        if(sortedArray[middle] == number)
+            return middle;
+        else if(number > sortedArray[middle])
+            min = middle + 1;
+        else if(number < sortedArray[middle])
+            max = middle - 1;
+    }
+    
+    return notFound;
+}
+
+void printArray(int array[], const int size, const char* msg)
+{
+    printf ("%s ", msg);
+    for(int i = 0; i < size; ++i)
+        printf ("%d ", array[i]);
+    
+    printf ("%c", '\n');
+}
+
+void printResult(int result)
+{
+    if(result >= 0)
+        printf ("%s %d", "Number found at index =", result);
+    else if(result == notFound)
+        printf ("%s ", "notFound");
+    else
+        printf("%s", "error");
+}
+
+int main(int, char**)
+{
+    int array[size] = {1, 5, 8, 22, 3, 14, 2, 88, 13, 21};
+    std::sort(array, array + size);
+    
+    printArray(array, size, "After sort:");
+    
+    int result = binarySearch(array, size, 14);
+    printResult(result);
+}
